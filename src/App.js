@@ -1,4 +1,5 @@
 import Card from "./components/Card";
+import Food from "./components/Food";
 import Hero from "./components/Hero";
 import Nav from "./components/Nav";
 
@@ -8,6 +9,7 @@ function App() {
       <Nav />
       <Hero/>
       <Card/>
+      <Food/>
     </div>
   );
 }
