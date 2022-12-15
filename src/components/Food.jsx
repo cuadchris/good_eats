@@ -2,9 +2,23 @@ import React, { useState } from "react";
 import { data } from "../data/data.js";
 
 const Food = () => {
+  const [foods, setFoods] = useState(data);
 
-    const [foods, setFoods] = useState(data)
+  const filterByType = (category) => {
+    setFoods(
+      data.filter((item) => {
+        return item.category === category;
+      })
+    );
+  };
 
+  const filterByPrice = (price) => {
+    setFoods(
+      data.filter((item) => {
+        return item.price === price;
+      })
+    );
+  };
 
   return (
     <div className="max-w-[1640] m-auto px-4 py-12">
@@ -17,20 +31,35 @@ const Food = () => {
         {/* Filter type */}
         <div>
           <p className="font-bold text-gray-700">Filter type</p>
-          <div className="flex flex-wrap justify-between">
-            <button className="border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white m-1">
+          <div className="flex flex-wrap">
+            <button
+              onClick={() => setFoods(data)}
+              className="border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white m-1"
+            >
               All
             </button>
-            <button className="border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white m-1">
+            <button
+              onClick={() => filterByType("burger")}
+              className="border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white m-1"
+            >
               Burgers
             </button>
-            <button className="border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white m-1">
+            <button
+              onClick={() => filterByType("pizza")}
+              className="border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white m-1"
+            >
               Pizza
             </button>
-            <button className="border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white m-1">
+            <button
+              onClick={() => filterByType("salad")}
+              className="border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white m-1"
+            >
               Salads
             </button>
-            <button className="border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white m-1">
+            <button
+              onClick={() => filterByType("chicken")}
+              className="border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white m-1"
+            >
               Chicken
             </button>
           </div>
@@ -39,31 +68,57 @@ const Food = () => {
         <div>
           <p className="font-bold text-gray-700">Filter Price</p>
           <div className="flex justify-between max-w-[390px] w-full">
-            <button className="border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white m-1">$</button>
-            <button className="border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white m-1">$$</button>
-            <button className="border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white m-1">$$$</button>
-            <button className="border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white m-1">$$$$</button>
+            <button
+              onClick={() => filterByPrice("$")}
+              className="border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white m-1"
+            >
+              $
+            </button>
+            <button
+              onClick={() => filterByPrice("$$")}
+              className="border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white m-1"
+            >
+              $$
+            </button>
+            <button
+              onClick={() => filterByPrice("$$$")}
+              className="border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white m-1"
+            >
+              $$$
+            </button>
+            <button
+              onClick={() => filterByPrice("$$$$")}
+              className="border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white m-1"
+            >
+              $$$$
+            </button>
           </div>
         </div>
       </div>
 
-        {/* display foods */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 pt-4">
-        {foods.map(({name, index, image, id, price}) => (
-            <div key={id}>
-                <img src={image} alt={name} />
-                <div>
-                    <p>{name}</p>
-                    <p>
-                        <span>{price}</span>
-                    </p>
-                </div>
+      {/* display foods */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 pt-4">
+        {foods.map(({ name, index, image, id, price }) => (
+          <div
+            key={id}
+            className="border shadow-lg hover:scale-105 duration-500 rounded-lg"
+          >
+            <img
+              src={image}
+              alt={name}
+              className="w-full h-[200px] object-cover rounded-t-lg"
+            />
+            <div className="flex justify-between px-2 py-4">
+              <p className="font-bold">{name}</p>
+              <p>
+                <span className="bg-orange-500 text-white p-1 rounded-full">
+                  {price}
+                </span>
+              </p>
             </div>
+          </div>
         ))}
-        </div>
-
-
-
+      </div>
     </div>
   );
 };
