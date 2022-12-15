@@ -4,7 +4,7 @@ const Card = () => {
   return (
     <div className="max-w-[1640] mx-auto p-4 py-12 grid md:grid-cols-3 gap-6">
       {/* Card */}
-      <div className="rounded-xl relative">
+      <div className="rounded-xl relative cursor-pointer hover:scale-105 duration-500">
         {/* Overlay */}
         <div className="absolute w-full h-full bg-black/50 rounded-xl text-white">
           <p className="font-bold text-2xl px-2 pt-4">
@@ -22,7 +22,7 @@ const Card = () => {
         />
       </div>
       {/* Card */}
-      <div className="rounded-xl relative">
+      <div className="rounded-xl relative cursor-pointer hover:scale-105 duration-500">
         {/* Overlay */}
         <div className="absolute w-full h-full bg-black/50 rounded-xl text-white">
           <p className="font-bold text-2xl px-2 pt-4">New Restaurants</p>
@@ -38,7 +38,7 @@ const Card = () => {
         />
       </div>
       {/* Card */}
-      <div className="rounded-xl relative">
+      <div className="rounded-xl relative cursor-pointer hover:scale-105 duration-500">
         {/* Overlay */}
         <div className="absolute w-full h-full bg-black/50 rounded-xl text-white">
           <p className="font-bold text-2xl px-2 pt-4">Just Desserts</p>
